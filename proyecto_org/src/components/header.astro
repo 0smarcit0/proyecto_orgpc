@@ -1,0 +1,47 @@
+---
+import pc from '../assets/pcicon.png';
+---
+
+
+<div>
+	<header>
+		<div id="head_subdiv">
+			<nav id="nav_head">
+				<img src={pc.src} alt="PC Image" id="img_pc" />
+				<ul id="nav_elements">
+					<li id = "nav_subelement">
+						a
+					</li >
+					<li id = "nav_subelement">
+						b
+					</li>
+					<li id = "nav_subelement">
+						c
+					</li>
+				</ul>
+			</nav>
+				
+		</div>
+	</header>
+</div>
+
+<style>
+#nav_head{
+		display: flex;
+		align-items: center;
+		padding: 1rem;
+		
+	}
+	#nav_elements {
+		list-style: none;
+		display: flex;
+		flex-direction: row;
+		gap: 6.7rem;
+		margin-left: 4rem;
+	}
+	
+	#head_subdiv {
+		background-color: rgba(0, 0, 0, 0.5);
+		border-radius: 0px 0px 20px 20px;
+	}
+</style>
