@@ -6,17 +6,34 @@ import pc from '../assets/pcicon.png';
 <div>
 	<header>
 		<div id="head_subdiv">
-			<nav id="nav_head">
-				<img src={pc.src} alt="PC Image" id="img_pc" />
+			<nav id="nav_head" class="nav_head">
+				<div class="logo">
+					<a href="" target="_self">
+						<img src={pc.src} alt="PC Image" id="img_pc" />
+						<div class="content_dd">
+							<p class="text_logo">Home</p>
+						</div>
+					</a>
+					
+				</div>
+				
+				
+				
 				<ul id="nav_elements">
 					<li id = "nav_subelement">
-						a
+						<a href="">
+							Arquitectura
+						</a>
 					</li >
 					<li id = "nav_subelement">
-						b
+						<a href="">
+							Componentes
+						</a>
 					</li>
 					<li id = "nav_subelement">
-						c
+						<a href="">
+							Simulacion
+						</a>
 					</li>
 				</ul>
 			</nav>
@@ -26,22 +43,104 @@ import pc from '../assets/pcicon.png';
 </div>
 
 <style>
+
+header{
+	font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
 #nav_head{
 		display: flex;
 		align-items: center;
 		padding: 1rem;
 		
 	}
+.nav_head li{
+		font-size: 1.5rem;
+		font-weight: bold;
+		color: #fff;
+		cursor: pointer;
+		transition: 0.3s ease-in-out;
+	}
+
+
+
 	#nav_elements {
 		list-style: none;
 		display: flex;
 		flex-direction: row;
-		gap: 6.7rem;
-		margin-left: 4rem;
+		gap: 5.5rem;
+		margin-left: 44vw;
+		margin-right: 0%;
 	}
 	
 	#head_subdiv {
-		background-color: rgba(0, 0, 0, 0.5);
-		border-radius: 0px 0px 20px 20px;
+		position: fixed;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 5.5rem;
+		padding: 2rem 5rem;
+		background-color: rgba(255, 255, 255, 0.1);
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		backdrop-filter: blur(10px);
+		border-bottom: 2px solid  rgba(255, 255, 255, 0.2);
+	}
+	#head_subdiv::before {
+		content: "";
+		position: absolute;
+		top: 0;
+		left: -100%;
+		width: 100%;
+		height: 100%;
+		background: linear-gradient(90deg, transparent, rgba(255,255,255,.4),transparent);
+		transition: 0.5s;
+	}
+	#head_subdiv:hover::before{
+		left: 100%;
+	}
+	#img_pc{
+		transition: 0.4s;
+		cursor: pointer;
+	}
+	#img_pc:hover{
+		transform: scale(1.1);
+	}
+	
+	.content_dd{
+		transition: 0.4s;
+		display: block;
+		align-items:start;
+		position: absolute;
+		text-decoration: none;
+		color: transparent;
+		
+	}
+	.logo{
+		margin-bottom: 1rem;
+	}
+	.logo:hover .content_dd{
+		transform: translateY(1);
+		transition: 0.8s ease-in;
+		display: block;
+		color: #fff;
+	}
+	.text_logo{
+		font-size: 1.2rem;
+		font-weight: bold;
+		
+		cursor: pointer;
+		margin: 0%;
+		margin-left: 1.3rem;
+		margin-bottom: 1rem;
+	}
+	#nav_subelement a{
+		text-decoration: none;
+		color: #fff;
+	
+	}
+	#nav_subelement a:hover{
+		transition: 0.5s;
+		color: #2e86eb;
 	}
 </style>
