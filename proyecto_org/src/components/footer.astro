@@ -3,8 +3,27 @@
 
 <div>
     <footer>
-        <h2>Universidad Nacional Experimental del Tachira</h2>
-        <h3>Organizacion del Computador</h3>
+        <div class="content1">
+            <h2>Universidad Nacional Experimental del Tachira</h2>
+            <h3>Organizacion del Computador 2026</h3>
+        </div>
+        <div class="content2">
+            <h3>Desarrollado por:</h3>
+            <div class="devs">
+                <div class="developer-info1">
+                    <p>Jorge Luis Rodriguez</p>
+                    <p>Yuliana Rodriguez</p>
+                </div>
+                <div class="developer-info2">
+                    <p>Yuliana Rodriguez</p>
+                    <p>Yuliana Rodriguez</p>
+                </div>
+            </div>
+            
+            
+           
+            
+        </div>
         
     </footer>
 </div>
@@ -14,10 +33,33 @@ footer{
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background-color: #333;
     color: #fff;
-    text-align: center;
+    text-align: start;
     padding: 1rem;
     position: fixed;
     bottom: 0;
     width: 100%;
+    display: flex;
+    flex-direction: row;
+}
+.content1{
+    height: 100%;
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    text-align: start;
+}
+.content2{
+    height: 100%;
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    text-align: end;
+    margin-right: 5rem;
+}
+.devs{
+    display: flex;
+    flex-direction: row;
+    justify-content: end;
+    gap: 2rem;
 }
 </style>
