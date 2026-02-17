@@ -1,0 +1,140 @@
+---
+const { components } = Astro.props;
+---
+
+<section
+  id="componentes-interactivos"
+  aria-label="Componentes informativos interactivos del computador"
+>
+  <header class="panel-header">
+    <p class="eyebrow">Módulos informativos</p>
+    <h2>Explora los bloques del computador</h2>
+    <p class="lede">
+      Selecciona un componente, elige entre <strong>Von Neumann</strong> o <strong>Harvard</strong>,
+      y alterna entre <strong>arquitectura</strong> (qué se ve desde fuera) y
+      <strong>organización</strong> (cómo se implementa por dentro).
+    </p>
+  </header>
+
+  <div class="layout">
+    <nav class="tabs" aria-label="Componentes principales">
+      {components.map((component, index) => (
+        <button
+          type="button"
+          class:list={[
+            'tab',
+            index === 0 && 'tab--active'
+          ]}
+          data-component={component.id}
+          aria-pressed={index === 0 ? 'true' : 'false'}
+        >
+          <span class="tab-title">{component.name}</span>
+          <span class="tab-role">{component.role}</span>
+        </button>
+      ))}
+    </nav>
+
+    <section class="content" aria-live="polite">
+      <div class="toggle-row toggle-row--dual">
+        <div class="toggle-group">
+          <span class="toggle-label">Modelo:</span>
+          <div class="toggle" data-arch-type-toggle>
+            <button
+              type="button"
+              class="toggle-pill toggle-pill--active"
+              data-arch-type="vonneumann"
+            >
+              Von Neumann
+            </button>
+            <button
+              type="button"
+              class="toggle-pill"
+              data-arch-type="harvard"
+            >
+              Harvard
+            </button>
+          </div>
+        </div>
+        <div class="toggle-group">
+          <span class="toggle-label">Vista conceptual:</span>
+          <div class="toggle" data-view-toggle>
+            <button
+              type="button"
+              class="toggle-pill toggle-pill--active"
+              data-view="architecture"
+            >
+              Arquitectura
+            </button>
+            <button
+              type="button"
+              class="toggle-pill"
+              data-view="organization"
+            >
+              Organización
+            </button>
+          </div>
+        </div>
+      </div>
+
+      {components.map((component, index) => (
+        <article
+          class="panel"
+          data-component-panel={component.id}
+          data-view="architecture"
+          data-arch-type="vonneumann"
+          hidden={index !== 0}
+        >
+          <header class="panel-heading">
+            <h3>{component.name}</h3>
+            <p class="panel-role">{component.role}</p>
+          </header>
+
+          <div class="pill-row" aria-hidden="true">
+            <span class="pill pill--arch">Arquitectura</span>
+            <span class="pill pill--org">Organización</span>
+            <span class="pill pill--arch-type">Von Neumann</span>
+            <span class="pill pill--arch-type">Harvard</span>
+          </div>
+
+          <div class="panel-columns">
+            <section class="panel-column panel-column--vonneumann" data-section="architecture" data-arch="vonneumann">
+              <h4>Desde la arquitectura (Von Neumann)</h4>
+              <ul>
+                {component.architecture.map((item) => (
+                  <li>{item}</li>
+                ))}
+              </ul>
+            </section>
+
+            <section class="panel-column panel-column--vonneumann" data-section="organization" data-arch="vonneumann">
+              <h4>Desde la organización (Von Neumann)</h4>
+              <ul>
+                {component.organization.map((item) => (
+                  <li>{item}</li>
+                ))}
+              </ul>
+            </section>
+
+            <section class="panel-column panel-column--harvard" data-section="architecture" data-arch="harvard">
+              <h4>Desde la arquitectura (Harvard)</h4>
+              <ul>
+                {component.harvardArchitecture.map((item) => (
+                  <li>{item}</li>
+                ))}
+              </ul>
+            </section>
+
+            <section class="panel-column panel-column--harvard" data-section="organization" data-arch="harvard" aria-hidden="true">
+              <h4>Desde la organización (Harvard)</h4>
+              <ul>
+                {component.harvardOrganization.map((item) => (
+                  <li>{item}</li>
+                ))}
+              </ul>
+            </section>
+          </div>
+        </article>
+      ))}
+    </section>
+  </div>
+</section>

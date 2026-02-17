@@ -1,0 +1,190 @@
+---
+import './ComponentsInfoPanel.css';
+import ComponentsInfoPanelView from './ComponentsInfoPanelView.astro';
+
+const COMPONENTS = [
+  {
+    id: 'cpu',
+    name: 'CPU',
+    role: 'Unidad Central de Proceso',
+    architecture: [
+      'Parte obligatoria de la arquitectura Von Neumann.',
+      'Define que existe una unidad de procesamiento que ejecuta instrucciones.',
+      'La CPU se conecta al bus único para acceder a memoria y E/S.',
+      'Trabaja con instrucciones y datos de 32 bits.'
+    ],
+    organization: [
+      'Incluye registros internos (PC, IR, acumuladores, registros de propósito general).',
+      'Unidad de Control que implementa el ciclo Fetch–Decode–Execute.',
+      'ALU que realiza operaciones aritmético-lógicas sobre palabras de 32 bits.',
+      'Rutas internas y señales de control que usan el único bus del sistema.'
+    ],
+    harvardArchitecture: [
+      'La CPU accede a memorias separadas: una para instrucciones y otra para datos.',
+      'Puede realizar fetch de instrucción y acceso a datos en paralelo.',
+      'Requiere dos buses distintos: bus de instrucciones y bus de datos.',
+      'Mayor rendimiento potencial al eliminar el cuello de botella del bus único.'
+    ],
+    harvardOrganization: [
+      'Puertos de acceso duplicados: uno hacia memoria de instrucciones, otro hacia memoria de datos.',
+      'Pipeline más eficiente: fetch y execute pueden solaparse sin conflicto.',
+      'Común en microcontroladores (PIC, AVR, muchos DSP).',
+      'Cache Harvard: caché L1 separada para instrucciones (I-cache) y datos (D-cache).'
+    ]
+  },
+  {
+    id: 'memory',
+    name: 'Memoria',
+    role: 'Almacén principal de instrucciones y datos',
+    architecture: [
+      'En Von Neumann, memoria única para código e información.',
+      'Vista externa: un espacio lineal de direcciones de 32 bits.',
+      'Se accede siempre a través del bus único compartido.',
+      'Debe permitir leer y escribir palabras de 32 bits.'
+    ],
+    organization: [
+      'Se implementa físicamente con bancos de chips y jerarquías (caché, RAM).',
+      'Tiene registros de soporte como MAR (Memory Address Register) y MDR.',
+      'Los tiempos de acceso y el ancho real del bus interno dependen de la tecnología.',
+      'Puede tener técnicas de alineación y segmentación internas no visibles en la arquitectura.'
+    ],
+    harvardArchitecture: [
+      'Dos espacios de memoria independientes: memoria de instrucciones y memoria de datos.',
+      'Cada una tiene su propio bus de direcciones y de datos.',
+      'No comparten direcciones: pueden tener tamaños y anchos distintos.',
+      'Protección inherente: el código no puede sobrescribirse accidentalmente por datos.'
+    ],
+    harvardOrganization: [
+      'Implementación física con dos bancos separados o tecnologías distintas.',
+      'Memoria de instrucciones suele ser de solo lectura (ROM/Flash).',
+      'Memoria de datos es lectura/escritura (RAM).',
+      'Pueden tener anchos de palabra diferentes según la aplicación.'
+    ]
+  },
+  {
+    id: 'io',
+    name: 'Entrada / Salida (E/S)',
+    role: 'Interacción con el exterior',
+    architecture: [
+      'La arquitectura sólo exige que exista un subsistema de E/S.',
+      'Comparte el mismo bus para intercambiar datos con la CPU y la memoria.',
+      'Define tipos generales de operaciones: leer datos externos, escribir resultados, señales de control.',
+      'No especifica qué dispositivos concretos hay ni cómo se conectan.'
+    ],
+    organization: [
+      'Incluye controladores, puertos, buffers y registros de estado específicos.',
+      'Se pueden usar interrupciones, E/S mapeada en memoria o E/S dirigida por programa.',
+      'Cada dispositivo tiene protocolos físicos concretos (USB, HDMI, teclado, etc.).',
+      'La forma de arbitrar el bus y priorizar dispositivos pertenece a la organización.'
+    ],
+    harvardArchitecture: [
+      'La E/S se conecta típicamente al bus de datos, no al de instrucciones.',
+      'Las instrucciones solo fluyen por el bus de instrucciones; los datos por el de datos.',
+      'La separación permite que la E/S no interfiera con el fetch de instrucciones.',
+      'Algunos diseños Harvard incluyen un tercer bus dedicado a E/S.'
+    ],
+    harvardOrganization: [
+      'Controladores de E/S conectados al bus de datos de la CPU.',
+      'DMA (acceso directo a memoria) opera sobre la memoria de datos.',
+      'Las interrupciones siguen el mismo principio que en Von Neumann.',
+      'Dispositivos de E/S no necesitan conocer la separación instrucción/dato.'
+    ]
+  },
+  {
+    id: 'bus',
+    name: 'Bus único / Buses',
+    role: 'Canal compartido (Von N.) o separado (Harvard)',
+    architecture: [
+      'Von Neumann: un único bus compartido para instrucciones, datos y E/S.',
+      'El bus conecta CPU, memoria y E/S en una misma vía lógica.',
+      'Desde la arquitectura se define qué se puede enviar: direcciones, datos, control.',
+      'Limita que sólo haya una transferencia a la vez sobre el canal compartido.'
+    ],
+    organization: [
+      'Se implementa con líneas físicas separadas: dirección, datos y control.',
+      'Incluye políticas de arbitraje (quién usa el bus y cuándo).',
+      'Puede tener buffers, amplificadores y divisiones eléctricas internas.',
+      'El ancho real (por ejemplo, 32 líneas de datos) y la temporización se diseñan aquí.'
+    ],
+    harvardArchitecture: [
+      'Harvard: dos buses principales: bus de instrucciones y bus de datos.',
+      'Cada bus tiene sus propias líneas de dirección, datos y control.',
+      'Permite fetch de instrucción y acceso a datos simultáneos.',
+      'No hay arbitraje entre instrucción y dato: operan en paralelo.'
+    ],
+    harvardOrganization: [
+      'Implementación con buses físicamente separados desde la CPU hasta las memorias.',
+      'Anchos de bus pueden diferir: p. ej. instrucciones de 24 bits, datos de 16 bits.',
+      'En cachés Harvard: buses separados entre CPU y caché L1.',
+      'En sistemas embebidos: buses independientes simplifican el diseño.'
+    ]
+  }
+];
+
+
+---
+
+<ComponentsInfoPanelView components={COMPONENTS} />
+
+<script>
+  // Interacción: componente, Von Neumann/Harvard, Arquitectura/Organización.
+  if (typeof window !== 'undefined') {
+    const root = document.getElementById('componentes-interactivos');
+    if (root) {
+      const tabs = root.querySelectorAll('.tab');
+      const panels = root.querySelectorAll('[data-component-panel]');
+      const viewToggle = root.querySelector('[data-view-toggle]');
+      const viewButtons = viewToggle?.querySelectorAll('.toggle-pill') ?? [];
+      const archTypeToggle = root.querySelector('[data-arch-type-toggle]');
+      const archTypeButtons = archTypeToggle?.querySelectorAll('.toggle-pill') ?? [];
+
+      // Selección de componente
+      tabs.forEach((tab) => {
+        tab.addEventListener('click', () => {
+          const id = tab.getAttribute('data-component');
+
+          tabs.forEach((t) => {
+            const isActive = t === tab;
+            t.classList.toggle('tab--active', isActive);
+            t.setAttribute('aria-pressed', isActive ? 'true' : 'false');
+          });
+
+          panels.forEach((panel) => {
+            const matches = panel.getAttribute('data-component-panel') === id;
+            panel.hidden = !matches;
+          });
+        });
+      });
+
+      // Selector Arquitectura / Organización
+      viewButtons.forEach((button) => {
+        button.addEventListener('click', () => {
+          const view = button.getAttribute('data-view');
+
+          viewButtons.forEach((b) => {
+            b.classList.toggle('toggle-pill--active', b === button);
+          });
+
+          panels.forEach((panel) => {
+            panel.setAttribute('data-view', view || 'architecture');
+          });
+        });
+      });
+
+      // Selector Von Neumann / Harvard
+      archTypeButtons.forEach((button) => {
+        button.addEventListener('click', () => {
+          const archType = button.getAttribute('data-arch-type');
+
+          archTypeButtons.forEach((b) => {
+            b.classList.toggle('toggle-pill--active', b === button);
+          });
+
+          panels.forEach((panel) => {
+            panel.setAttribute('data-arch-type', archType || 'vonneumann');
+          });
+        });
+      });
+    }
+  }
+</script>
