@@ -1,0 +1,185 @@
+---
+import  '../components/simulation.css';
+---
+
+
+<section>
+    <div class="memory">
+        <h2 class="memory-title">Memoria</h2>
+        <table>
+     <tr>
+        <th>Dirección</th>
+        <th>Data</th>
+     </tr>
+      <tr>
+        <td id="dir-ins">1</td>
+        <td>
+          <select name="memory-input" id="memory-input" class="memory-input">
+            <option value="LOAD 5">LOAD 5</option>
+            <option value="LOAD 6">LOAD 6</option>
+            <option value="LOAD 7">LOAD 7</option>
+            <option value="LOAD 8">LOAD 8</option>
+            <option value="LOAM 5">LOAM 5</option>
+            <option value="LOAM 6">LOAM 6</option>
+            <option value="LOAM 7">LOAM 7</option>
+            <option value="LOAM 8">LOAM 8</option>
+            <option value="ADD 5">ADD 5</option>
+            <option value="ADD 6">ADD 6</option>
+            <option value="ADD 7">ADD 7</option>
+            <option value="ADD 8">ADD 8</option>
+            <option value="STOR 5">STOR 5</option>
+            <option value="STOR 6">STOR 6</option>
+            <option value="STOR 7">STOR 7</option>
+            <option value="STOR 8">STOR 8</option>
+            <option value="MUL 5">MUL 5</option>
+            <option value="MUL 6">MUL 6</option>
+            <option value="MUL 7">MUL 7</option>
+            <option value="MUL 8">MUL 8</option>
+          </select>
+        </td>
+      </tr>
+      <tr>
+        <td id="dir-ins">2</td>
+        <td>
+          <select name="memory-input" id="memory-input" class="memory-input">
+            <option value="LOAD 5">LOAD 5</option>
+            <option value="LOAD 6">LOAD 6</option>
+            <option value="LOAD 7">LOAD 7</option>
+            <option value="LOAD 8">LOAD 8</option>
+            <option value="LOAM 5">LOAM 5</option>
+            <option value="LOAM 6">LOAM 6</option>
+            <option value="LOAM 7">LOAM 7</option>
+            <option value="LOAM 8">LOAM 8</option>
+            <option value="ADD 5">ADD 5</option>
+            <option value="ADD 6">ADD 6</option>
+            <option value="ADD 7">ADD 7</option>
+            <option value="ADD 8">ADD 8</option>
+            <option value="STOR 5">STOR 5</option>
+            <option value="STOR 6">STOR 6</option>
+            <option value="STOR 7">STOR 7</option>
+            <option value="STOR 8">STOR 8</option>
+            <option value="MUL 5">MUL 5</option>
+            <option value="MUL 6">MUL 6</option>
+            <option value="MUL 7">MUL 7</option>
+            <option value="MUL 8">MUL 8</option>
+          </select>
+        </td>
+      </tr>
+      <tr>
+        <td id="dir-ins">3</td>
+        <td>
+          <select name="memory-input" id="memory-input" class="memory-input">
+            <option value="LOAD 5">LOAD 5</option>
+            <option value="LOAD 6">LOAD 6</option>
+            <option value="LOAD 7">LOAD 7</option>
+            <option value="LOAD 8">LOAD 8</option>
+            <option value="LOAM 5">LOAM 5</option>
+            <option value="LOAM 6">LOAM 6</option>
+            <option value="LOAM 7">LOAM 7</option>
+            <option value="LOAM 8">LOAM 8</option>
+            <option value="ADD 5">ADD 5</option>
+            <option value="ADD 6">ADD 6</option>
+            <option value="ADD 7">ADD 7</option>
+            <option value="ADD 8">ADD 8</option>
+            <option value="STOR 5">STOR 5</option>
+            <option value="STOR 6">STOR 6</option>
+            <option value="STOR 7">STOR 7</option>
+            <option value="STOR 8">STOR 8</option>
+            <option value="MUL 5">MUL 5</option>
+            <option value="MUL 6">MUL 6</option>
+            <option value="MUL 7">MUL 7</option>
+            <option value="MUL 8">MUL 8</option>
+          </select>
+        </td>
+      </tr>
+      <tr>
+        <td id="dir-ins">4</td>
+        <td>
+          <select name="memory-input" id="memory-input" class="memory-input">
+            <option value="LOAD 5">LOAD 5</option>
+            <option value="LOAD 6">LOAD 6</option>
+            <option value="LOAD 7">LOAD 7</option>
+            <option value="LOAD 8">LOAD 8</option>
+            <option value="LOAM 5">LOAM 5</option>
+            <option value="LOAM 6">LOAM 6</option>
+            <option value="LOAM 7">LOAM 7</option>
+            <option value="LOAM 8">LOAM 8</option>
+            <option value="ADD 5">ADD 5</option>
+            <option value="ADD 6">ADD 6</option>
+            <option value="ADD 7">ADD 7</option>
+            <option value="ADD 8">ADD 8</option>
+            <option value="STOR 5">STOR 5</option>
+            <option value="STOR 6">STOR 6</option>
+            <option value="STOR 7">STOR 7</option>
+            <option value="STOR 8">STOR 8</option>
+            <option value="MUL 5">MUL 5</option>
+            <option value="MUL 6">MUL 6</option>
+            <option value="MUL 7">MUL 7</option>
+            <option value="MUL 8">MUL 8</option>
+          </select>
+        </td>
+      </tr>
+      <tr>
+        <td id="dir-dat">5</td>
+        <td><input class="memory-input" type="text" placeholder="Data"></td>
+      </tr>
+      <tr>
+        <td id="dir-dat">6</td>
+        <td><input class="memory-input" type="text" placeholder="Data"></td>
+      </tr>
+      <tr>
+        <td id="dir-dat">7</td>
+        <td><input class="memory-input" type="text" placeholder="Data"></td>
+      </tr>
+      <tr>
+        <td id="dir-dat">8</td>
+        <td><input class="memory-input" type="text" placeholder="Data"></td>
+      </tr>
+        </table>
+    </div>
+    
+  
+    <div class="cpu">
+        <h2 class="cpu-title">CPU</h2>
+        <div class="alu">
+          <h3>Alu</h3>
+          <div class="stor">
+            <button class="AC">AC</button>
+            <button class="MQ">MQ</button>
+          </div>
+          <button class="big-alu">
+            Unidad Aritmético Lógica
+          </button>
+          <button class="MBR">
+            MBR
+          </button>
+        </div>
+        <div class="cc">
+          <h3>CC</h3>
+          <div class="state">
+            <button class="PC">
+              PC
+            </button>
+            <button class="IBR">
+              IBR
+            </button>
+          </div>
+          <div class="inst">
+            <button class="MAR">
+              MAR
+            </button>
+            <button class="IR">
+              IR
+            </button>
+          </div>
+        </div>
+    </div>
+    <div class="io">
+        <h2 class="io-title">I/O</h2>
+        <button class="startb">Comenzar</button>
+    </div>
+</section>
+
+
+
+<script src="../scripts/simulacion.js"></script>
