@@ -152,6 +152,8 @@ h2{
     justify-content: center;
     align-items: center;
     gap: 1rem 4rem;
+    padding: 1rem;
+    box-shadow: 0 3px 7px rgba(78, 103, 245, 0.24);
 }
 .stor{
     display: flex;
@@ -181,19 +183,10 @@ h2{
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    box-shadow: 0 3px 7px rgba(78, 103, 245, 0.24);
+    padding: 1rem;
 }
-.cpu button{
-    padding: 0.3rem 0.5rem;
-    border-radius: .3rem;
-    background-color: rgba(59, 130, 246, 0.22);
-    color: grey;
-    font-size: bolder;
-    border: 1px solid rgba(148, 163, 184, 0.5);
-    transition: all 0.35s ease-in-out;
-    cursor: pointer;    
-    width: 6rem;
-    height: 3.4rem;
-}
+
 
 .io{
     transition: all 0.5s ease-in-out;
@@ -303,4 +296,34 @@ h2{
     transition: all 0.35s ease-in-out;
     border-color: rgba(148, 163, 184, 0.8);
     box-shadow: 0 3px 6px rgba(192, 212, 240, 0.459);
+}
+
+.cpu button{
+    padding: 0.3rem 0.5rem;
+    border-radius: .3rem;
+    background-color: rgba(59, 130, 246, 0.22);
+    color: grey;
+    font-size: bolder;
+    border: 1px solid rgba(148, 163, 184, 0.5);
+    transition: all 0.35s ease-in-out;
+    cursor: pointer;    
+    width: 6rem;
+    height: 3.4rem;
+}
+
+.cpu button:before{
+    opacity: 0;
+    content: attr(data-info);
+    position: absolute;
+    background-color: #0b1220;
+    color: white;
+    padding: 0.3rem 0.5rem;
+    border-radius: .3rem;
+    box-shadow: 0 3px 6px rgba(192, 212, 240, 0.459);
+    transform: translateY(-30px) translateX(-40px) rotate(25deg);
+}
+.cpu button:hover:before{
+    transform: translateY(-45px) rotate(0deg);
+    opacity: 1;
+    transition: all 0.3s ease-in-out;
 }
