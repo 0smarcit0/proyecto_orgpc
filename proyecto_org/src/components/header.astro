@@ -46,7 +46,9 @@ import pc from '../assets/pcicon.png';
 
 header{
 	font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-	position: relative;
+	position: absolute;
+	z-index: 10;
+
 }
 
 	#nav_head{
@@ -118,7 +120,7 @@ header{
 	.logo{
 		margin-bottom: 0;
 	}
-	.logo:hover .content_dd{
+	.logo:hover{
 		transform: translateY(1);
 		transition: 0.8s ease-in;
 		display: block;

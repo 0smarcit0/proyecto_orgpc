@@ -11,9 +11,9 @@ import  '../components/simulation.css';
         <th>Dirección</th>
         <th>Data</th>
      </tr>
-      <tr>
+      <tr >
         <td id="dir-ins">1</td>
-        <td>
+        <td class="ins-col">
           <select name="memory-input" id="memory-input" class="memory-input">
             <option value="LOAD 5">LOAD 5</option>
             <option value="LOAD 6">LOAD 6</option>
@@ -38,9 +38,9 @@ import  '../components/simulation.css';
           </select>
         </td>
       </tr>
-      <tr>
+      <tr >
         <td id="dir-ins">2</td>
-        <td>
+        <td class="ins-col">
           <select name="memory-input" id="memory-input" class="memory-input">
             <option value="LOAD 5">LOAD 5</option>
             <option value="LOAD 6">LOAD 6</option>
@@ -65,9 +65,9 @@ import  '../components/simulation.css';
           </select>
         </td>
       </tr>
-      <tr>
+      <tr >
         <td id="dir-ins">3</td>
-        <td>
+        <td class="ins-col">
           <select name="memory-input" id="memory-input" class="memory-input">
             <option value="LOAD 5">LOAD 5</option>
             <option value="LOAD 6">LOAD 6</option>
@@ -92,9 +92,9 @@ import  '../components/simulation.css';
           </select>
         </td>
       </tr>
-      <tr>
+      <tr >
         <td id="dir-ins">4</td>
-        <td>
+        <td class="ins-col">
           <select name="memory-input" id="memory-input" class="memory-input">
             <option value="LOAD 5">LOAD 5</option>
             <option value="LOAD 6">LOAD 6</option>
@@ -121,19 +121,19 @@ import  '../components/simulation.css';
       </tr>
       <tr>
         <td id="dir-dat">5</td>
-        <td><input class="memory-input" type="text" placeholder="Data"></td>
+        <td class="ins-col"><input class="memory-input dat" type="text" placeholder="Data"></td>
       </tr>
       <tr>
         <td id="dir-dat">6</td>
-        <td><input class="memory-input" type="text" placeholder="Data"></td>
+        <td class="ins-col"><input class="memory-input dat" type="text" placeholder="Data"></td>
       </tr>
       <tr>
         <td id="dir-dat">7</td>
-        <td><input class="memory-input" type="text" placeholder="Data"></td>
+        <td class="ins-col" ><input class="memory-input dat" type="text" placeholder="Data"></td>
       </tr>
       <tr>
         <td id="dir-dat">8</td>
-        <td><input class="memory-input" type="text" placeholder="Data"></td>
+        <td class="ins-col"><input class="memory-input dat" type="text" placeholder="Data"></td>
       </tr>
         </table>
     </div>
@@ -177,9 +177,17 @@ import  '../components/simulation.css';
     <div class="io">
         <h2 class="io-title">I/O</h2>
         <button class="startb">Comenzar</button>
+        <div class="console">
+            <h2 class="console-title">Consola</h2>
+            <div class="console-output">
+              <textarea name="console-output" id="console-output" readonly ></textarea>
+            </div>
+        </div>
     </div>
 </section>
-
+<section class="info-sec">
+  
+</section>
 
 
 <script src="../scripts/simulacion.js"></script>
