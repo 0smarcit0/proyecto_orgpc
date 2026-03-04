@@ -266,8 +266,11 @@ let process_mul = async (dat, opcode) => {
                 MQ.classList.add("active");
                 mq_value+= parseInt(dataValues[parseInt(dat[1])-5]);
             }
-            
         }, 9000);
+        setTimeout(()=>{
+            MQ.classList.remove("active")
+            resolve("done")
+        },10500)
 
     });
 }
