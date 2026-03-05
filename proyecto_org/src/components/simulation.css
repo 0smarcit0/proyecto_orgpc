@@ -320,10 +320,21 @@ h2{
     padding: 0.3rem 0.5rem;
     border-radius: .3rem;
     box-shadow: 0 3px 6px rgba(192, 212, 240, 0.459);
-    transform: translateY(-30px) translateX(-40px) rotate(25deg);
+    transform: translateY(-30px) translateX(-60px) rotate(25deg);
 }
 .cpu button:hover:before{
-    transform: translateY(-45px) rotate(0deg);
+    transform: translateY(-45px) rotate(0deg) translateX(-38%);
     opacity: 1;
     transition: all 0.3s ease-in-out;
+}
+
+.flecha{
+    --triangle-shape: polygon(100% 0, 100% 100%, 0 50%);
+    --gradient: linear-gradient(indigo, hotpink);
+
+    background: var(--gradient);
+    width: 9rem;
+    height: 9rem;
+    clip-path: var(--triangle-shape);
+    background: blue
 }
