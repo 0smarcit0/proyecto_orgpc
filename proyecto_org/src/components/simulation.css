@@ -328,13 +328,25 @@ h2{
     transition: all 0.3s ease-in-out;
 }
 
-.flecha{
-    --triangle-shape: polygon(100% 0, 100% 100%, 0 50%);
-    --gradient: linear-gradient(indigo, hotpink);
+.flecha {
+    /* Estado inicial: punta hacia la izquierda */
+    --triangle-left: polygon(0 50%, 100% 100%, 100% 0);
+    /* Estado final: punta hacia la derecha */
+    --triangle-right: polygon(100% 50%, 0 100%, 0 0);
+    
+   
 
-    background: var(--gradient);
+    background: rgba(30, 41, 59, 0.7); /* El gradiente que tenías */
     width: 9rem;
     height: 9rem;
-    clip-path: var(--triangle-shape);
-    background: blue
+    clip-path: var(--triangle-left);
+    
+    /* La magia de la animación */
+    transition: clip-path 0.5s ease-in-out, background 0.5s;
+    cursor: pointer;
+}
+
+.activa {
+    clip-path: var(--triangle-right);
+    background:rgba(33, 46, 66, 0.808); /* Cambiamos el color para darle más impacto */
 }

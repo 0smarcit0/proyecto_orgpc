@@ -12,6 +12,7 @@ const MBR = document.querySelector(".MBR");
 const MAR = document.querySelector(".MAR");
 const data = document.querySelectorAll(".memory-input");
 const consoleOutput = document.querySelector("#console-output");
+const flecha_mem = document.querySelector(".memory_arw");
 let instructions = [];
 let dataValues = [];
 let cont_pc = 0;
@@ -34,10 +35,12 @@ let process_data = () => {
 
 let process_load = async (dat,opcode) => {
     return new Promise((resolve) => {
+
         cpu.classList.add("cpu-act");
         consoleOutput.value += `PC apuntando a ${cont_pc}...\n`;
         PC.textContent = `PC: ${cont_pc}`;
         PC.classList.add("active");
+        
         setTimeout(() => {
             PC.classList.remove("active");
             MAR.textContent = `MAR: ${cont_pc}`;
@@ -49,7 +52,12 @@ let process_load = async (dat,opcode) => {
         setTimeout(() => {
             cpu.classList.remove("cpu-act");
             MAR.classList.remove("active");
+            if (flecha_mem.classList.contains("activa")) {
+                flecha_mem.classList.remove("activa");
+            }
             memory.classList.add("memory-act");
+            
+
             consoleOutput.value += `Accediendo a memoria en dirección ${cont_pc}...\n`;
             //MBR.textContent = `MBR: ${opcode} ${dat[1]}`;
             //MBR.classList.add("active");
@@ -57,6 +65,7 @@ let process_load = async (dat,opcode) => {
 
         setTimeout(() => {
             memory.classList.remove("memory-act");
+            flecha_mem.classList.add("activa");
             cpu.classList.add("cpu-act");
             MBR.textContent = `MBR: ${dat[0]} ${dat[1]}`;
             consoleOutput.value += `MBR cargando instrucción ${dat[0]} ${dat[1]}...\n`;
@@ -105,7 +114,9 @@ let process_load = async (dat,opcode) => {
 }
 let process_add = async (dat, opcode) => {
     return new Promise((resolve) => {
+        cpu.classList.add("cpu-act");
         PC.textContent = `PC: ${cont_pc}`;
+        
         PC.classList.add("active");
         consoleOutput.value += `PC apuntando a ${cont_pc}...\n`;
         setTimeout(() => {
@@ -116,6 +127,10 @@ let process_add = async (dat, opcode) => {
         }, 1500);
         setTimeout(() => {
             MAR.classList.remove("active");
+            cpu.classList.remove("cpu-act");
+            if (flecha_mem.classList.contains("activa")) {
+                flecha_mem.classList.remove("activa");
+            }
             memory.classList.add("memory-act");
             consoleOutput.value += `Accediendo a memoria en dirección ${cont_pc}...\n`;
             //MBR.textContent = `MBR: ${opcode} ${dat[1]}`;
@@ -124,8 +139,11 @@ let process_add = async (dat, opcode) => {
 
         setTimeout(() => {
             memory.classList.remove("memory-act");
+            flecha_mem.classList.add("activa");
+            cpu.classList.add("cpu-act");
             MBR.textContent = `MBR: ${dat[0]} ${dat[1]}`;
             MBR.classList.add("active");
+            
             consoleOutput.value += `MBR cargando instrucción ${dat[0]} ${dat[1]}...\n`;
         }, 4500);
         setTimeout(() => {        
@@ -156,6 +174,7 @@ let process_add = async (dat, opcode) => {
         setTimeout(() => {
             AC.classList.remove("active");
             MQ.classList.remove("active");
+            cpu.classList.remove("cpu-act");
             resolve("done")
             consoleOutput.value += `Instrucción ${dat[0]} ${dat[1]} procesada.\n\n`;
         }, 10500);
@@ -164,6 +183,7 @@ let process_add = async (dat, opcode) => {
 }
 let process_stor = async (dat, opcode) => {
     return new Promise((resolve) => {
+        cpu.classList.add("cpu-act");
         PC.textContent = `PC: ${cont_pc}`;
         PC.classList.add("active");
         consoleOutput.value += `PC apuntando a ${cont_pc}...\n`;
@@ -175,6 +195,10 @@ let process_stor = async (dat, opcode) => {
         }, 1500);
         setTimeout(() => {
             MAR.classList.remove("active");
+            cpu.classList.remove("cpu-act");
+             if (flecha_mem.classList.contains("activa")) {
+                flecha_mem.classList.remove("activa");
+            }
             memory.classList.add("memory-act");
             consoleOutput.value += `Accediendo a memoria en dirección ${cont_pc}...\n`;
             //MBR.textContent = `MBR: ${opcode} ${dat[1]}`;
@@ -183,6 +207,8 @@ let process_stor = async (dat, opcode) => {
 
         setTimeout(() => {
             memory.classList.remove("memory-act");
+            flecha_mem.classList.add("activa");
+            cpu.classList.add("cpu-act");
             MBR.textContent = `MBR: ${dat[0]} ${dat[1]}`;
             MBR.classList.add("active");
             consoleOutput.value += `MBR cargando instrucción ${dat[0]} ${dat[1]}...\n`;
@@ -200,6 +226,8 @@ let process_stor = async (dat, opcode) => {
         setTimeout(() => {
             IR.classList.remove("active");
             MAR.classList.remove("active");
+            cpu.classList.remove("cpu-act");
+            flecha_mem.classList.remove("activa");
             memory.classList.add("memory-act");
             consoleOutput.value += `Guardando dato ${ac_value} en dirección ${dat[1]}...\n`;
             data[parseInt(dat[1])-1].value = ac_value;
@@ -214,6 +242,7 @@ let process_stor = async (dat, opcode) => {
 }
 let process_mul = async (dat, opcode) => {
     return new Promise((resolve) => {
+        cpu.classList.add("cpu-act")
         PC.textContent = `PC: ${cont_pc}`;
         PC.classList.add("active");
         consoleOutput.value += `PC apuntando a ${cont_pc}...\n`;
@@ -225,6 +254,10 @@ let process_mul = async (dat, opcode) => {
         }, 1500);
         setTimeout(() => {
             MAR.classList.remove("active");
+            cpu.classList.remove("cpu-act");
+            if (flecha_mem.classList.contains("activa")) {
+                flecha_mem.classList.remove("activa")
+            }
             memory.classList.add("memory-act");
             consoleOutput.value += `Accediendo a memoria en dirección ${cont_pc}...\n`;
             //MBR.textContent = `MBR: ${opcode} ${dat[1]}`;
@@ -233,6 +266,8 @@ let process_mul = async (dat, opcode) => {
 
         setTimeout(() => {
             memory.classList.remove("memory-act");
+            flecha_mem.classList.add("activa")
+            cpu.classList.add("cpu-act")
             MBR.textContent = `MBR: ${dat[0]} ${dat[1]}`;
             MBR.classList.add("active");
             consoleOutput.value += `MBR cargando instrucción ${dat[0]} ${dat[1]}...\n`;
@@ -269,6 +304,7 @@ let process_mul = async (dat, opcode) => {
         }, 9000);
         setTimeout(()=>{
             MQ.classList.remove("active")
+            cpu.classList.remove("cpu-act")
             resolve("done")
         },10500)
 
@@ -346,7 +382,7 @@ b.addEventListener("click", () => {
     process_data();
     process_instructions();
     consoleOutput.value = ``;
-     // Re-habilitar el botón después de 5 segundos
+    
 });
 
 
